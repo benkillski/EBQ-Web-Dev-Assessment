@@ -1,2 +1,39 @@
 /******* LANDING PAGE STYLES *******/
+html, body {
+    margin: 0;
+    padding: 0;
+}
 
+button {
+    height: 30px;
+    border: none;
+    border-radius: 10px;
+}
+
+#top-container {
+    background-color: #ebf4ff;
+}
+
+#header-container {
+    height: 60px;
+    padding: 10px 30px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#header-container button {
+    background-color: #2979ec;
+    color: white;
+}
+
+#middle-container {
+
+}
+
+#footer-container {
+
+}
+
+.text-container {
+    width: 400px;
+}
