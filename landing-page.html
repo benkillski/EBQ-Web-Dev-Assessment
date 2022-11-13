@@ -3,61 +3,160 @@
 
 <head>
 	<title>Landing Page</title>
-
+	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
 	<link rel="stylesheet" href="styles.css">
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
 	<!--Page Content-->
-	<div id="top-container">
-		<div id="header-container">
-			<img src="assets\logo-blue-160x160-1.png">
-			<button>Contact Us</button>
-		</div>
+	<div id="contact-form-container">
+		<button class="close-button">x</button>
+		<form action="" id="contact-form">
+			<h2>Contact Us</h2>
+			<p>Have a question? Send us a message and we'll assist you as soon as possible!</p>
 
-		<div class="text-container">
-			<h2>Integrated Marketing Services</h2>
-			<p>
-				We turn your marketing plans into action by building on your ideas and executing initiatives alongside
-				you and your team. Get a complete department that can pivot to different areas of marketing based on
-				your needs.
-			</p>
-		</div>
-	</div>
-	<div id="middle-container">
-		<div class="text-container">
-			<h2>
-				We're experts with modern marketing tools, so you don't have to be!
-			</h2>
-			<p>
-				With hands-on experience in B2B's most innovative apps and tools, we take a data-driven approach to
-				continually improve prospect engagement. Whether we work directly out of your platform or provide our
-				insights manually, you always get full visibility into the process.
-			</p>
-		</div>
-		<img src="assets\Marketing_Tools.svg">
+			<div class="form-input">
+				<label for="name">Name*</label>
+				<input type="text" required>
+			</div>
 
-		<img src="assets\Complete-Department-Marketing.png">
-		<div class="text-container">
-			<h2>
-				The best way to build a marketing team
-			</h2>
-			<p>
-				With EBQ, you're not just hiring a marketing specialist. You're getting an entire marketing department
-				at a fraction of the cost and effort of hiring internally.
-			</p>
-			<p>
-				For each project, we provide: a Success Manager to drive high-level strategy, a Project Manager to
-				oversee day-to-day operations, and one or more Specialists working diligently to amplify your brand.
-			</p>
-		</div>
+			<div class="form-input">
+				<label for="email">Email address*</label>
+				<input type="email" required>
+			</div>
+
+			<div class="form-input">
+				<label for="name">Message</label>
+				<textarea name="message" form="contact-form" rows="10"></textarea>
+			</div>
+
+			<button type="submit" class="send-message-button">Send Message</button>
+		</form>
 	</div>
-	<div id="footer-container">
-		<h3>Looking to take your marketing to the next level?</h3>
-		<button>Contact Us</button>
+	<div id="form-submit-confirmation">
+		<p><span class="bold">Thank you for your message!</span></p>
+		<p><span class="bold">We will be in touch!</span></p>
+		<button class="continue-button">Continue</button>
+	</div>
+	<div id="contact-form-overlay"></div>
+	<div id="master-container">
+		<div id="top-container">
+			<div id="header-container">
+				<img src="assets\logo-blue-160x160-1.png">
+				<button class="contact-button">Contact Us</button>
+			</div>
+			<div class="section-container ">
+				<div class="container-half">
+					<div class="text-container">
+						<h2>Integrated<br><span class="bold">Marketing Services</span></h2>
+						<p>
+							We turn your marketing plans into action by building on your ideas and executing initiatives
+							alongside
+							you and your team. Get a complete department that can pivot to different areas of marketing
+							based on
+							your needs.
+						</p>
+					</div>
+				</div>
+				<div class="container-half"></div>
+			</div>
+		</div>
+		<div id="middle-container" class="section-container">
+			<div class="container-half">
+				<div class="text-container">
+					<h3>
+						We're experts with <span class="bold">modern marketing tools,</span> so you don't have to be!
+					</h3>
+					<p>
+						With hands-on experience in B2B's most innovative apps and tools, we take a data-driven approach
+						to
+						continually improve prospect engagement. Whether we work directly out of your platform or
+						provide our
+						insights manually, you always get full visibility into the process.
+					</p>
+				</div>
+				<div>
+					<img id="marketing-tools-img" src="assets\Marketing_Tools.svg">
+				</div>
+			</div>
+
+			<div class="container-half">
+				<div>
+					<img id="complete-department-marketing-img" src="assets\Complete-Department-Marketing.png">
+				</div>
+				<div class="text-container">
+					<h3>
+						<span class="bold">The best way</span> to build a marketing team
+					</h3>
+					<p>
+						With EBQ, you're not just hiring a marketing specialist. You're getting an entire marketing
+						department
+						at a fraction of the cost and effort of hiring internally.
+					</p>
+					<p>
+						For each project, we provide: a Success Manager to drive high-level strategy, a Project Manager
+						to
+						oversee day-to-day operations, and one or more Specialists working diligently to amplify your
+						brand.
+					</p>
+				</div>
+			</div>
+		</div>
+		<div id="footer-container" class="section-container">
+			<h3>Looking to take your <span class="bold">marketing to the next level?</span></h3>
+			<button class="contact-button">Contact Us</button>
+		</div>
 	</div>
 	<script type="text/javascript">
 		// Event listener JS goes here
+		$("#contact-form-container").hide();
+		$("#form-submit-confirmation").hide();
+
+		//Listener for contact buttons
+		$(".contact-button").click(function () {
+			scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+			scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
+
+				window.onscroll = function () {
+					window.scrollTo(scrollLeft, scrollTop);
+				};
+
+			$("#contact-form-overlay").show();
+			$("#contact-form-container").show();
+		});
+
+		//Listener for contact form submission
+		$("#contact-form").submit(function () {
+			event.preventDefault(); 
+			
+			scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+			scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
+
+				window.onscroll = function () {
+					window.scrollTo(scrollLeft, scrollTop);
+				};
+
+				$("#contact-form-container").hide();
+				$("#form-submit-confirmation").show();
+				$("#contact-form-overlay").show();
+				
+		});
+
+		//Listener for contact form close button
+		$(".close-button").click(function () {
+			window.onscroll = function () {};
+
+			$("#contact-form-overlay").hide();
+			$("#contact-form-container").hide();
+		})
+
+		$(".continue-button").click(function () {
+			window.onscroll = function () {};
+
+			$("#form-submit-confirmation").hide();
+			$("#contact-form-overlay").hide();
+		});
 	</script>
 </body>
 
