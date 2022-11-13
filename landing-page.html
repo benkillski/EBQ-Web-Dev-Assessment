@@ -113,8 +113,11 @@
 		$("#contact-form-container").hide();
 		$("#form-submit-confirmation").hide();
 
+		var fadeTime = 200;
+
 		//Listener for contact buttons
 		$(".contact-button").click(function () {
+			//Disable page scroll
 			scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 			scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
 
@@ -122,40 +125,40 @@
 					window.scrollTo(scrollLeft, scrollTop);
 				};
 
-			$("#contact-form-overlay").show();
-			$("#contact-form-container").show();
+			//Displays overlay and contact form
+			$("#contact-form-overlay").fadeIn(fadeTime);
+			$("#contact-form-container").fadeIn(fadeTime);
 		});
 
 		//Listener for contact form submission
 		$("#contact-form").submit(function () {
-			event.preventDefault(); 
-			
-			scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-			scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
+			//Prevents page from reloading when form is submitted
+			event.preventDefault();
 
-				window.onscroll = function () {
-					window.scrollTo(scrollLeft, scrollTop);
-				};
+			//Hides contact form, then displays submission confirmation 
+			$("#contact-form-container").fadeOut(fadeTime);
+			$("#form-submit-confirmation").fadeIn(fadeTime);
 
-				$("#contact-form-container").hide();
-				$("#form-submit-confirmation").show();
-				$("#contact-form-overlay").show();
-				
 		});
 
-		//Listener for contact form close button
+		//Listener for the contact form's close button
 		$(".close-button").click(function () {
+			//Re-enables scrolling
 			window.onscroll = function () {};
 
-			$("#contact-form-overlay").hide();
-			$("#contact-form-container").hide();
+			//Hides overlay and contact form
+			$("#contact-form-overlay").fadeOut(fadeTime);
+			$("#contact-form-container").fadeOut(fadeTime);
 		})
 
+		//Submission confirmation's continue button listener
 		$(".continue-button").click(function () {
+			//Re-enables scrolling
 			window.onscroll = function () {};
 
-			$("#form-submit-confirmation").hide();
-			$("#contact-form-overlay").hide();
+			//Hides overlay and submission confirmation
+			$("#form-submit-confirmation").fadeOut(fadeTime);
+			$("#contact-form-overlay").fadeOut(fadeTime);
 		});
 	</script>
 </body>
